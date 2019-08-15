@@ -1,0 +1,33 @@
+<app-nav></app-nav>
+<div class="container">
+  <section>
+    <h2>Productos agregados a tu carrito</h2>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Sibtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="cart.lines.length == 0">
+            <td>TU CARRITO ESTÁ VACÍO</td>
+          </tr>
+          <tr *ngFor="let line of cart.lines">
+            <td>{{line.product.productName}}</td>
+            <td>{{line.product.MSRP | currency: "USD": true:  "2.2-2"}}</td>
+            <td><input  min="1" id="quantity" type="number" [value]= "line.quantity" (change)="updateQuantity(line.product, $event.target.value)"></td>
+            <td>{{line.lineTotal | currency: "USD": true:  "2.2-2"}}</td>
+            <td><button class="btn btn btn-danger btn-sm" (click)="deleteLine(line.product.productCode)" ><i class="fa fa-trash"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Total:  <span class="badge badge-secondary">{{cart.cartPrice | currency: "USD": true:  "2.2-2"}}</span></h4>
+      <div id="seguir" class="row">
+        <button class="btn btn-outline-dark" routerLink="/store">Seguir comprando</button>
+      </div>
+  </section>
+  </div>

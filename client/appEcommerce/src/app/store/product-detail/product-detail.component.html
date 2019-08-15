@@ -1,0 +1,47 @@
+<app-nav></app-nav>
+<div class="container" *ngIf="product$ | async as product">
+
+  <div class="row">
+
+    <div class="col-lg-3">
+      <h1 class="my-4">Shop Name</h1>
+    </div>
+    <!-- /.col-lg-3 -->
+
+    <div class="col-lg-9">
+
+      <div class="card mt-4">
+        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+        <div class="card-body">
+          <h3 class="card-title">{{product.productName}}</h3>
+          <h4>{{product.MSRP | currency: 'MXN'}}</h4>
+          <h5>Categoría:</h5>
+          <p class="card-text">{{product.productLine}}</p>
+          <h5>Escala:</h5>
+          <p class="card-text">{{product.productScale}}</p>
+          <h5>Proveedor:</h5>
+          <p class="card-text">{{product.productVendor}}</p>
+      </div>
+      <!-- /.card -->
+
+      <div  class="card card-outline-secondary my-4">
+        <div class="card-header">
+          <h4>Product description</h4>
+        </div>
+        <div  class="card-body">
+          <p>{{product.productDescription}}</p>
+        </div>  
+      </div>
+      <button id="volver" type="button" class="btn btn-outline-dark" routerLink="/store">Back</button>
+      <!-- /.card -->
+      
+    </div>
+    <!-- /.col-lg-9 -->
+    
+  </div>
+  
+</div>
+
+</div>
+<!-- /.container -->
+<app-footer></app-footer>
